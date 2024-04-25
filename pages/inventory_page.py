@@ -41,8 +41,8 @@ class InventoryPage(BasePage):
     def invent_add_find(self):
         return self.find_el(InventLocate.add_button)
 
-    def invent_remotes_find(self):
+    def invent_removes_find(self):
         return self.find_elems(InventLocate.remove_button)
 
-    def invent_remote_find(self):
+    def invent_remove_find(self):
         return self.find_el(InventLocate.remove_button)

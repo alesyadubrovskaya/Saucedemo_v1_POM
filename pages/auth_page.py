@@ -48,6 +48,7 @@ class AuthPage(BasePage):
         return self.is_clickable(AuthLocate.login_button).click()
 
     def auth(self, username, password):
+        self.open()
         self.name_input(username)
         self.pass_input(password)
         self.press_login()
@@ -64,3 +65,7 @@ class AuthPage(BasePage):
     @staticmethod
     def empty_err():
         return AuthData.error_text_2
+
+    @staticmethod
+    def empty_pass_err():
+        return AuthData.error_text_3

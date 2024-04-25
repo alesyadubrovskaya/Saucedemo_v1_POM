@@ -8,14 +8,22 @@ class OrderLocate:
     cancel_button = ('xpath', '//button[@class="cart_cancel_link btn_secondary"]')
     thanks_header = ('xpath', '//h2')
     thanks_icon = ('xpath', '//img[@class = "pony_express"]')
+    sub_total = ('xpath', '//div[@class = "summary_subtotal_label"]')
+    tax = ('xpath', '//div[@class = "summary_tax_label"]')
+    total = ('xpath', '//div[@class = "summary_total_label"]')
+    order_quant = ('xpath', '//div[@class = "summary_quantity"]')
 
 
 class OrderData:
-    fname = 'Alex'
-    lname = 'Dubr'
-    zip = '123456789'
+    fname_ok = 'Alex'
+    lname_ok = 'Dubr'
+    zip_ok = '123456'
+    fname_wrong = '1'
+    lname_wrong = 'm'
+    zip_wrong = '*'
     error_order_1 = 'Error: First Name is required'
     error_order_2 = 'Error: Last Name is required'
     error_order_3 = 'Error: Postal Code is required'
     thanks_head = 'THANK YOU FOR YOUR ORDER'
-    thanks_img = './img/pony-express.png'
+    thanks_img = 'https://www.saucedemo.com/v1/img/pony-express.png'
+    tax_rate = 0.0800266755585195

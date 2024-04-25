@@ -10,27 +10,38 @@ class BasePage:
         self.url = url
         self.wait = WebDriverWait(self.browser, 10)
 
+    # open the browser on the URL set-up
     def open(self):
         self.browser.get(self.url)
 
+    # refresh the browser on the URL set-up
     def refresh(self):
         return self.browser.refresh()
 
+    # go back the browser on the URL set-up
+    def go_back(self):
+        return self.browser.back()
+
+    # find the elements set-up
     def find_elems(self, locator) -> list[WebElement]:
         return self.browser.find_elements(*locator)
 
+    # find one element set-up
     def find_el(self, locator) -> WebElement:
         return self.browser.find_element(*locator)
 
+    # see if the element is visible set-up
     def is_visible(self, locator) -> WebElement:
         return self.wait.until(EC.visibility_of_element_located(locator))
 
+    # see if the element is invisible set-up
     def is_invisible(self, locator) -> WebElement:
         return self.wait.until(EC.invisibility_of_element_located(locator))
 
     def visibility(self, locator) -> WebElement:
         return self.wait.until(EC.visibility_of(locator))
 
+    # see if the element is clickable set-up
     def is_clickable(self, locator) -> WebElement:
         return self.wait.until(EC.element_to_be_clickable(locator))
 

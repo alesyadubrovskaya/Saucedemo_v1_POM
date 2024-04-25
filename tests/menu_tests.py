@@ -33,6 +33,7 @@ def test_reset(browser, login, inv_page, cart_page, menu_page):
     menu_page.open_menu().click()
     menu_page.reset_opt().click()
     assert cart_page.cart_badge_invisible(), 'Cart not empty'
+    cart_page.refresh()
 
 
 # allitems option test

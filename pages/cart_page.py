@@ -20,6 +20,12 @@ class CartPage(BasePage):
     def cart_quantity(self):
         return self.is_visible(CartLocate.cart_quant)
 
+    def cart_quantities_find(self):
+        return self.find_elems(CartLocate.cart_quant)
+
+    def cart_quantity_find(self):
+        return self.find_el(CartLocate.cart_quant)
+
     def cart_icons_find(self):
         return self.find_elems(CartLocate.cart_button)
 
@@ -52,3 +58,6 @@ class CartPage(BasePage):
 
     def cart_item_price_find(self):
         return self.find_el(InventLocate.inv_price)
+
+    def cart_items_cards(self):
+        return self.find_elems(CartLocate.cart_card)
