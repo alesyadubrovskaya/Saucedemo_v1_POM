@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.remote.webdriver import WebElement
 from selenium.webdriver.support.ui import WebDriverWait
@@ -10,17 +11,18 @@ class BasePage:
         self.url = url
         self.wait = WebDriverWait(self.browser, 10)
 
-    # open the browser on the URL set-up
     def open(self):
-        self.browser.get(self.url)
+        with allure.step('open the page'):
+            self.browser.get(self.url)
 
-    # refresh the browser on the URL set-up
     def refresh(self):
-        return self.browser.refresh()
+        with allure.step('refresh the page'):
+            return self.browser.refresh()
 
     # go back the browser on the URL set-up
     def go_back(self):
-        return self.browser.back()
+        with allure.step('go back to the previous page'):
+            return self.browser.back()
 
     # find the elements set-up
     def find_elems(self, locator) -> list[WebElement]:

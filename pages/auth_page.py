@@ -1,31 +1,37 @@
 import pytest
+import allure
 from pages.base_page import BasePage
 from locators.auth_locate import AuthLocate, AuthData
 
 
 @pytest.fixture()
 def login(log_page):
-    log_page.auth(AuthData.username_ok, AuthData.password_ok)
+    with allure.step('standard user authorization'):
+        log_page.auth(AuthData.username_ok, AuthData.password_ok)
 
 
 @pytest.fixture()
 def login_logout(log_page):
-    log_page.auth(AuthData.username_logout, AuthData.password_ok)
+    with allure.step('locked out user authorization'):
+        log_page.auth(AuthData.username_logout, AuthData.password_ok)
 
 
 @pytest.fixture()
 def login_problem(log_page):
-    log_page.auth(AuthData.username_problem, AuthData.password_ok)
+    with allure.step('problem user authorization'):
+        log_page.auth(AuthData.username_problem, AuthData.password_ok)
 
 
 @pytest.fixture()
 def login_glitch(log_page):
-    log_page.auth(AuthData.username_glitch, AuthData.password_ok)
+    with allure.step('glitch user authorization'):
+        log_page.auth(AuthData.username_glitch, AuthData.password_ok)
 
 
 @pytest.fixture()
 def login_wrong(log_page):
-    log_page.auth(AuthData.username_wrong, AuthData.password_wrong)
+    with allure.step('wrong data authorization'):
+        log_page.auth(AuthData.username_wrong, AuthData.password_wrong)
 
 
 class AuthPage(BasePage):
@@ -49,9 +55,11 @@ class AuthPage(BasePage):
 
     def auth(self, username, password):
         self.open()
-        self.name_input(username)
-        self.pass_input(password)
-        self.press_login()
+        with allure.step('fill the authorization form'):
+            self.name_input(username)
+            self.pass_input(password)
+        with allure.step('click the "LOGIN" button'):
+            self.press_login()
         return self
 
     @staticmethod
